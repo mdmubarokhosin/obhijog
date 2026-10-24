@@ -1,0 +1,50 @@
+{
+  "// অভিযোগ — Firebase Realtime Database নিয়ম (Firestore ব্যবহৃত হয় না)": "",
+  "// কুইক-স্টার্ট সেট (সবকিছু চালু): Firebase কনসোল → Realtime Database → Rules →": "",
+  "// এই JSON বসিয়ে Publish করুন। প্রথম অ্যাডমিন তৈরির পর নিচের হার্ডেন-টিপ দেখুন।": "",
+  "// ⚠️ settings/github-এ GitHub PAT থাকে — তাই অবশ্যই Fine-grained, এক-repo,": "",
+  "//    Contents:Read-write, মেয়াদ-সীমিত টোকেন ব্যবহার করুন (README দেখুন)।": "",
+  "rules": {
+    "complaints": {
+      ".read": true,
+      ".indexOn": ["createdAt"],
+      "$id": {
+        ".write": true
+      }
+    },
+    "comments": {
+      ".read": true,
+      "$complaintId": {
+        ".indexOn": ["createdAt"],
+        "$cid": {
+          ".write": true
+        }
+      }
+    },
+    "reactions": {
+      ".read": true,
+      "$complaintId": {
+        "$clientId": {
+          ".write": true
+        }
+      }
+    },
+    "notices": {
+      ".read": true,
+      ".write": true,
+      ".indexOn": ["createdAt"]
+    },
+    "taxonomies": {
+      ".read": true,
+      ".write": true
+    },
+    "settings": {
+      ".read": true,
+      ".write": true
+    },
+    "admins": {
+      ".read": true,
+      ".write": true
+    }
+  }
+}

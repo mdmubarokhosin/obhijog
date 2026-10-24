@@ -1,0 +1,38 @@
+{
+  "name": "অভিযোগ — নাগরিক জবাবদিহিতা",
+  "short_name": "অভিযোগ",
+  "description": "সরকারি দপ্তর ও জনপ্রতিনিধিরা নাগরিকের সঙ্গে আসলে কী করে — তার একটি প্রকাশ্য, যাচাইযোগ্য হিসাব।",
+  "lang": "bn",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#f14a0a",
+  "categories": [
+    "government",
+    "social",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

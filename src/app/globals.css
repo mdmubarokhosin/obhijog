@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── অভিযোগ থিম: somossha.me-অনুপ্রাণিত অরেঞ্জ-লাল ─────────────
+   সাদা পটভূমি + উষ্ণ নিরপেক্ষ টোন + প্রাণবন্ত কমলা অ্যাকসেন্ট।
+   RGB চ্যানেল-ভেরিয়েবল — Tailwind ক্লাসে alpha modifier (bg-accent/10) কাজ করে। */
+:root {
+  --bg: 255 255 255;
+  --fg: 28 22 18;
+  --surface: 255 255 255;
+  --surface-2: 246 243 240;
+  --border: 235 228 221;
+  --muted: 114 104 96;
+  --accent: 241 74 10;
+  --accent-fg: 255 255 255;
+  --danger: 202 38 26;
+  --danger-fg: 255 255 255;
+  --warning: 176 112 8;
+  --warning-fg: 255 255 255;
+  --success: 22 128 77;
+  --success-fg: 255 255 255;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: 17 13 11;
+  --fg: 238 232 226;
+  --surface: 25 20 17;
+  --surface-2: 34 28 24;
+  --border: 52 43 37;
+  --muted: 168 157 148;
+  --accent: 255 110 45;
+  --accent-fg: 34 10 2;
+  --danger: 242 92 78;
+  --danger-fg: 34 8 4;
+  --warning: 240 178 52;
+  --warning-fg: 34 22 4;
+  --success: 74 198 130;
+  --success-fg: 5 22 13;
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-bn-bengali), var(--font-bn-latin), ui-sans-serif,
+    system-ui, sans-serif;
+  font-feature-settings: "liga" 1;
+  /* অ্যাপ-অনুভূতি: ব্রাউজারের পুল-টু-রিফ্রেশ/ওভারস্ক্রল কমানো */
+  overscroll-behavior-y: none;
+  background: rgb(var(--bg));
+  color: rgb(var(--fg));
+}
+
+/* ─── নেটিভ <details> অ্যাকর্ডিয়ন ─────────────────────────────── */
+details.acc-item summary {
+  list-style: none;
+}
+details.acc-item summary::-webkit-details-marker {
+  display: none;
+}
+.acc-chev {
+  transition: transform 0.2s ease;
+}
+details.acc-item[open] .acc-chev {
+  transform: rotate(180deg);
+}
+
+/* ─── ডেস্কটপে অ্যাপ-ফ্রেমের পেছনের পটভূমি ─────────────────────── */
+.app-bg {
+  background:
+    radial-gradient(
+      60rem 40rem at 15% -10%,
+      color-mix(in srgb, rgb(var(--accent)) 16%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      50rem 36rem at 110% 110%,
+      color-mix(in srgb, rgb(var(--accent)) 11%, transparent),
+      transparent 55%
+    ),
+    rgb(var(--surface-2));
+}
+
+.dark .app-bg {
+  background:
+    radial-gradient(
+      60rem 40rem at 15% -10%,
+      color-mix(in srgb, rgb(var(--accent)) 20%, transparent),
+      transparent 60%
+    ),
+    rgb(var(--surface-2));
+}
+
+/* সংখ্যা সারিবদ্ধ রাখার জন্য ট্যাবুলার ফিগার */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* চিপ-সারির অনুভূমিক স্ক্রলে স্ক্রলবার লুকানো (অ্যাপ-অনুভূতি) */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* পাতলা স্ক্রলবার */
+.thin-scroll {
+  scrollbar-width: thin;
+}
+.thin-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: rgb(var(--muted) / 0.35);
+  border-radius: 999px;
+}
+
+/* সনার টোস্ট অ্যাপ-ফ্রেমের ভেতরে না এসে নিরাপদে উপরে */
+[data-sonner-toaster] {
+  z-index: 9999 !important;
+}
+
+/* Android-এ নেটিভ ড্রপডাউনের ফন্ট ঠিক রাখতে */
+select,
+option {
+  font-family: inherit;
+}

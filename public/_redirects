@@ -1,0 +1,16 @@
+# Cloudflare Pages — অভিযোগ
+#
+# ⚠️ v2.0.1 ফিক্স: আগে এখানে ছিল —
+#   /admin    /admin.html   200
+#   /admin/   /admin.html   200
+# এই 200-rewrite নিয়মগুলো Cloudflare Pages-এর স্বয়ংক্রিয় pretty-URL
+# ক্যানোনিকালাইজেশনের (admin.html → /admin) সঙ্গে সংঘর্ষে /admin-এ
+# অসীম 308 রিডাইরেক্ট লুপ তৈরি করত — এডমিন প্যানেল খুলত না।
+#
+# এখন আর কোনো নিয়ম লাগে না: next.config.ts-এ trailingSlash:true থাকায়
+# এক্সপোর্ট হয় out/admin/index.html, আর Cloudflare Pages ডিরেক্টরি-ইনডেক্স
+# নিজে থেকেই সার্ভ করে (/admin ও /admin/ — দুটোতেই)।
+#
+# ভবিষ্যতে নিয়ম যোগ করলে সাবধান: কোনো rewrite-এর লক্ষ্য যেন *.html ফাইল না হয়
+# (হলে একই লুপ ফিরে আসবে)। রিডাইরেক্টের লক্ষ্য হিসেবে trailing-slash-সহ
+# ডিরেক্টরি-পাথ (/admin/) ব্যবহার করুন।
